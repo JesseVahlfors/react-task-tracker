@@ -1,23 +1,22 @@
-function Task ({id, title, priority}) {
-    return (
-        <div>
-            <input type="checkbox"
-            id={id}
-            name={id}
-            value={id}
-            />
+function Task({ id, title, priority, completed, onToggle, onDelete }) {
+  return (
+    <div>
+      <input
+        type="checkbox"
+        id={id}
+        checked={completed}
+        onChange={() => onToggle(id)}
+      />
 
-            <label htmlFor={id}>{title}</label>
+      <label htmlFor={id}>{title}</label>
 
-            <br/>
+      <p>Priority: {priority}</p>
 
-            <p>
-                Priority: {priority}
-            </p>
+      <p>Status: {completed ? "Done" : "Todo"}</p>
 
-            <br />
-        </div>
-    )
+      <button onClick={() => onDelete(id)}>Delete Task</button>
+    </div>
+  );
 }
 
-export default Task
+export default Task;
