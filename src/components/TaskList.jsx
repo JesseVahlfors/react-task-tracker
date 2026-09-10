@@ -7,6 +7,8 @@ function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
   const [sortOrder, setSortOrder] = useState("default");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const filteredTasks = tasks.filter((task) => {
     if (filter === "todo") {
@@ -68,6 +70,12 @@ function TaskList() {
         }));
 
         setTasks(fetchedTasks);
+      })
+      .catch((error) => {
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -83,6 +91,14 @@ function TaskList() {
         onFilterChange={setFilter}
         onSortChange={setSortOrder}
       />
+
+      {loading && <p>Loading tasks...</p>}
+
+      {error && <p>Error: {error}</p>}
+
+      {!loading && !error && visibleTasks.length === 0 && (
+        <p>No tasks found.</p>
+      )}
 
       {visibleTasks.map((task) => (
         <Task
