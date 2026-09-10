@@ -21,7 +21,7 @@ function TaskForm({ onAdd }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="task-form">
       <label>
         Task name:
         <input

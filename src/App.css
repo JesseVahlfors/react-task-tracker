@@ -1,0 +1,47 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.task-list {
+  background: white;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.task-form,
+.task-controls {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+}
+
+.task {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+.task:last-child {
+  margin-bottom: 0;
+}
+
+.task label,
+.task-form label,
+.task-controls label {
+  margin-right: 1rem;
+}
+
+.task button {
+  margin-top: 0.5rem;
+}

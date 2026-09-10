@@ -1,6 +1,6 @@
 function TaskControls({ filter, sortOrder, onFilterChange, onSortChange }) {
   return (
-    <div>
+    <div className="task-controls">
       <select
         value={filter}
         onChange={(event) => onFilterChange(event.target.value)}

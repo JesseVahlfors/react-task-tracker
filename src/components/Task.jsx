@@ -1,6 +1,6 @@
 function Task({ id, title, priority, completed, onToggle, onDelete }) {
   return (
-    <div>
+    <div className="task">
       <input
         type="checkbox"
         id={id}

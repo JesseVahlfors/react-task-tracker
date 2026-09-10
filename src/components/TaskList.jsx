@@ -72,7 +72,7 @@ function TaskList() {
   }, []);
 
   return (
-    <div>
+    <div className="task-list">
       <h2>Task Tracker</h2>
 
       <p>--------------------------</p>
