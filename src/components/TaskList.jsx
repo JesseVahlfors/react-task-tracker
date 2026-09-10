@@ -1,5 +1,6 @@
 import Task from "./Task";
 import TaskForm from "./TaskForm";
+import TaskControls from "./TaskControls";
 import { useState } from "react";
 
 function TaskList() {
@@ -79,23 +80,13 @@ function TaskList() {
       <h2>Task Tracker</h2>
 
       <p>--------------------------</p>
-      <select
-        value={filter}
-        onChange={(event) => setFilter(event.target.value)}
-      >
-        <option value="all">All</option>
-        <option value="todo">Todo</option>
-        <option value="done">Done</option>
-      </select>
 
-      <select
-        value={sortOrder}
-        onChange={(event) => setSortOrder(event.target.value)}
-      >
-        <option value="default">Default</option>
-        <option value="high-to-low">High to Low</option>
-        <option value="low-to-high">Low to High</option>
-      </select>
+      <TaskControls
+        filter={filter}
+        sortOrder={sortOrder}
+        onFilterChange={setFilter}
+        onSortChange={setSortOrder}
+      />
 
       {visibleTasks.map((task) => (
         <Task
