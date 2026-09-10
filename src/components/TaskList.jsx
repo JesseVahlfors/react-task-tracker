@@ -1,29 +1,10 @@
 import Task from "./Task";
 import TaskForm from "./TaskForm";
 import TaskControls from "./TaskControls";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function TaskList() {
-  const [tasks, setTasks] = useState([
-    {
-      id: "task1",
-      title: "Learn props",
-      priority: "high",
-      completed: false,
-    },
-    {
-      id: "task2",
-      title: "Learn data flow",
-      priority: "high",
-      completed: false,
-    },
-    {
-      id: "task3",
-      title: "Learn react",
-      priority: "high",
-      completed: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
   const [sortOrder, setSortOrder] = useState("default");
 
@@ -74,6 +55,21 @@ function TaskList() {
   function deleteTask(id) {
     setTasks(tasks.filter((task) => task.id !== id));
   }
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos?_limit=5")
+      .then((response) => response.json())
+      .then((data) => {
+        const fetchedTasks = data.map((task) => ({
+          id: task.id,
+          title: task.title,
+          priority: "normal",
+          completed: task.completed,
+        }));
+
+        setTasks(fetchedTasks);
+      });
+  }, []);
 
   return (
     <div>
