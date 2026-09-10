@@ -1,14 +1,20 @@
-function Task () {
+function Task ({id, title, priority}) {
     return (
         <div>
-            <input type="checkbox" id='task1' name="name1" value='task1' />
-            <label htmlFor="task1"> Task</label>
+            <input type="checkbox"
+            id={id}
+            name={id}
+            value={id}
+            />
+
+            <label htmlFor={id}>{title}</label>
+
             <br/>
-            <select id="priority1">
-                <option value="high">High</option>
-                <option value="normal">Normal</option>
-                <option value="low">Low</option>
-            </select>
+
+            <p>
+                Priority: {priority}
+            </p>
+
             <br />
         </div>
     )
